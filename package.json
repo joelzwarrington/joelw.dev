@@ -15,7 +15,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test": "jest",
-    "test:coverage": "npm test -- --runInBand --no-cache --coverage",
+    "test:coverage": "npm test -- --runInBand --no-cache --coverage --passWithNoTests",
     "prepare": "husky install"
   },
   "dependencies": {

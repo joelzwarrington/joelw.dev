@@ -51,7 +51,7 @@ jobs:
       - node/install-packages
       - run:
           name: Jest
-          command: npm test:coverage
+          command: npm run test:coverage
 
 workflows:
   version: 2
