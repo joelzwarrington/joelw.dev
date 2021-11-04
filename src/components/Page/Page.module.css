@@ -1,8 +1,15 @@
 .container {
+  min-height: 100vh;
   padding: 0 var(--space-base);
+  background-color: var(--color-surface--reverse);
 }
 
 .page {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.content {
+  padding: 0 var(--space-small);
+  color: var(--color-text--reverse);
 }
