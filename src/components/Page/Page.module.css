@@ -1,0 +1,8 @@
+.container {
+  padding: 0 var(--space-base);
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}

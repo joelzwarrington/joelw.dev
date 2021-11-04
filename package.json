@@ -1,0 +1,68 @@
+{
+  "name": "joelw.dev",
+  "description": "Joel's Personal Website",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "develop": "next dev -p 9001",
+    "build": "next build",
+    "start": "next start",
+    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "lint:css": "stylelint './src/**/*.css' --allow-empty-input",
+    "lint:markdown": "prettier --check '**/*.md'",
+    "lint:fix": "npm run lint:js -- --fix --quiet && npm run lint:css -- --fix && npm run lint:markdown -- --write",
+    "lint": "npm run lint:js && npm run lint:css",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "test": "jest",
+    "test:coverage": "npm test -- --runInBand --no-cache --coverage",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/preset-env": "7.16.0",
+    "@babel/preset-react": "7.16.0",
+    "@babel/preset-typescript": "7.16.0",
+    "@jobber/components": "2.64.1",
+    "@jobber/design": "0.19.0",
+    "@jobber/hooks": "1.8.0",
+    "@jobber/stylelint-config": "0.3.0",
+    "classnames": "2.3.1",
+    "dotenv": "8.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "next": "12.0.1",
+    "prop-types": "15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "ts-xor": "1.0.8"
+  },
+  "devDependencies": {
+    "@jobber/eslint-config": "0.7.1",
+    "@svgr/webpack": "5.5.0",
+    "@testing-library/jest-dom": "5.10.1",
+    "@testing-library/react": "10.2.1",
+    "@testing-library/react-hooks": "5.1.1",
+    "@testing-library/user-event": "12.0.2",
+    "@types/jest": "26.0.22",
+    "eslint": "7.20.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "husky": "7.0.4",
+    "jest": "^27.3.1",
+    "jest-fetch-mock": "3.0.3",
+    "lint-staged": "11.2.6",
+    "next-router-mock": "0.5.3",
+    "prettier": "2.2.1",
+    "stylelint": "13.12.0",
+    "ts-jest": "26.5.5",
+    "typescript": "4.4.4"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix --allow-empty-input",
+    "*.json": "prettier --write",
+    "*.{js,jsx,ts,tsx,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
