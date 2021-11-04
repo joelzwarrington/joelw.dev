@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { Navigation } from "@/components/Navigation";
 import styles from "./Page.module.css";
+import { Navigation } from "@/components/Navigation";
 
 export function Page({ children }: { children: ReactNode | ReactNode[] }) {
   return (

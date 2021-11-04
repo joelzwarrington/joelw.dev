@@ -11,7 +11,8 @@
   color: white;
 }
 
-.heading a:hover, .heading h3:hover {
+.heading a:hover,
+.heading h3:hover {
   color: var(--color-interactive--subtle);
 }
 
