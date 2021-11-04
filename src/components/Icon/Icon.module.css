@@ -1,0 +1,55 @@
+.size-small svg {
+  max-width: var(--space-larger);
+}
+
+.size-base svg {
+  max-width: var(--space-largest);
+}
+
+.size-large svg {
+  max-width: var(--space-extravagant);
+}
+
+.color-base svg path {
+  fill: var(--color-text--reverse);
+}
+
+.color-inverted svg path {
+  fill: var(--color-surface--reverse);
+}
+
+.icon button {
+  display: inline-flex;
+  min-height: calc(var(--base-unit) * 2.25);
+  box-sizing: border-box;
+  margin: 0;
+  border: var(--border-base) solid var(--color-interactive--subtle);
+  border-color: transparent;
+  border-radius: var(--radius-base);
+  color: var(--color-interactive--subtle);
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all var(--timing-base);
+  appearance: none;
+  fill: var(--color-interactive--subtle);
+  align-items: center;
+  justify-content: center;
+}
+
+.icon button * {
+  color: inherit;
+}
+
+.icon button:focus,
+.icon button:active {
+  box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+.icon button svg {
+  width: 100%;
+}
