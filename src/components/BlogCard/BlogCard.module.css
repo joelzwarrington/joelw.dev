@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  gap: var(--space-small);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.categories {
+  display: flex;
+  gap: var(--space-base);
+  flex-wrap: wrap;
+}
