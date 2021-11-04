@@ -11,57 +11,64 @@ references:
 
 jobs:
   checkout_code:
-    <<: *docker_node_base
+    docker:
+      - <<: *docker_node_base
     steps:
       - checkout
 
-  install_dependencies:
-    <<: *docker_node_base
-    steps:
-      - checkout
-      - node/install-packages
-
-  lint_javascript:
-    <<: *docker_node_base
+  install_node_dependencies:
+    docker:
+      - <<: *docker_node_base
     steps:
       - checkout
       - node/install-packages
-      - run: npm run lint:js
-
+  
   lint_css:
-    <<: *docker_node_base
-    steps:
-      - checkout
-      - node/install-packages
-      - run: npm run lint:css
-
-  test_javascript:
-    <<: *docker_node_base
+    docker:
+      - <<: *docker_node_base
     steps:
       - checkout
       - node/install-packages
       - run:
-          name: "Run tests with Jest"
-          command:
-            npm test -- --runInBand --no-cache --coverage
+          name: Lint CSS
+          command: npm run lint:css 
+
+  lint_javascript:
+    docker:
+      - <<: *docker_node_base
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Lint Javascript
+          command: npm run lint 
+
+  test_jest:
+    docker:
+      - <<: *docker_node_base
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Jest
+          command: npm test:coverage
 
 workflows:
   version: 2
-
-  joelw_dev:
+  lint_and_test:
     jobs:
       - checkout_code
-      - install_dependencies:
+      - install_node_dependencies:
           requires:
             - checkout_code
-      - lint_javascript:
-          requires:
-            - install_dependencies
       - lint_css:
           requires:
-            - install_dependencies
-      - test_javascript:
+            - install_node_dependencies
+      - lint_javascript:
           requires:
-            - install_dependencies
+            - install_node_dependencies
+      - test_jest:
+          requires:
+            - install_node_dependencies
             - lint_javascript
             - lint_css
