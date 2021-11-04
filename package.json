@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "next dev -p 9001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 9001",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",
     "lint:css": "stylelint './src/**/*.css' --allow-empty-input",
     "lint:markdown": "prettier --check '**/*.md'",
