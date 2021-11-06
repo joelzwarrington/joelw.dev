@@ -65,6 +65,7 @@ export function Job() {
       <Button
         label="Jobber"
         url="https://getjobber.com"
+        external
         size="small"
         variation="subtle"
       />
