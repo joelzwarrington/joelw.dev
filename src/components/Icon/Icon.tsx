@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon as AtlantisIcon } from "@jobber/components/Icon";
 import classname from "classnames";
 import GitHubIcon from "./github.svg";
 import LinkedinIcon from "./linkedin.svg";
@@ -6,30 +7,16 @@ import TwitterIcon from "./twitter.svg";
 import styles from "./Icon.module.css";
 
 interface IconProps {
-  name: "github" | "linkedin" | "twitter";
-  size?: "small" | "base" | "large";
+  name: "github" | "linkedin" | "twitter" | "email";
   color?: "base" | "inverted";
-  button?: boolean;
 }
 
-export function Icon({
-  name,
-  size = "base",
-  color = "base",
-  button = false,
-}: IconProps) {
-  const icon = classname(
-    styles.icon,
-    styles[`color-${color}`],
-    styles[`size-${size}`],
-  );
+export function Icon({ name, color = "base" }: IconProps) {
+  const icon = classname(styles.icon, styles[`color-${color}`]);
 
-  const Wrapper = button ? "button" : React.Fragment;
   return (
     <div className={icon}>
-      <Wrapper>
-        <InternalIcon name={name} />
-      </Wrapper>
+      <InternalIcon name={name} />
     </div>
   );
 }
@@ -44,6 +31,9 @@ export function InternalIcon({ name }: IconProps) {
     }
     case "twitter": {
       return <TwitterIcon />;
+    }
+    case "email": {
+      return <AtlantisIcon name="email" size="large" />;
     }
     default: {
       return <></>;

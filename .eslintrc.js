@@ -21,7 +21,12 @@ module.exports = {
     "import/no-internal-modules": [
       "warn",
       {
-        allow: ["@jobber/*", "**@jobber/**", "@/components/**"],
+        allow: [
+          "@jobber/*",
+          "**@jobber/**",
+          "@/components/**",
+          "@/features/**",
+        ],
       },
     ],
   },

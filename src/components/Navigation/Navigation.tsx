@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "next/link";
 import { Button } from "@jobber/components/Button";
 import styles from "./Navigation.module.css";
+import { Link } from "@/components/Link";
 
 export function Navigation() {
   return (
