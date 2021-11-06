@@ -4,7 +4,7 @@ import { Emphasis } from "@jobber/components/Emphasis";
 import { Page } from "@/components/Page";
 import { ErrorBanner } from "@/components/ErrorBanner";
 
-export default function NotFoundPage() {
+export default function ServerErrorPage() {
   const { replace } = useRouter();
   return (
     <Page>
@@ -19,7 +19,7 @@ export default function NotFoundPage() {
           },
         }}
       >
-        <Emphasis variation="bold">404</Emphasis>: page not found
+        <Emphasis variation="bold">500</Emphasis>: error processing your request
       </ErrorBanner>
     </Page>
   );
