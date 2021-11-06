@@ -1,0 +1,49 @@
+.introduction {
+  --introduction--minimum-vertical-margin: var(--space-base);
+  --introduction--maximum-vertical-margin: calc(var(--space-extravagant) * 4);
+  --introduction--vertical-margin: 15vh;
+  margin: clamp(
+      var(--introduction--minimum-vertical-margin),
+      var(--introduction--vertical-margin),
+      var(--introduction--maximum-vertical-margin)
+    )
+    0;
+}
+
+.greeting p {
+  color: var(--color-greyBlue--lighter);
+}
+
+.lead h2 {
+  color: var(--color-greyBlue--lightest);
+}
+
+.description {
+  max-width: calc(var(--space-extravagant) * 8);
+  margin: var(--space-base) 0;
+}
+
+.description p {
+  color: var(--color-greyBlue--lighter);
+}
+
+.job {
+  display: inline;
+  padding: 0 0 0 var(--space-smaller);
+}
+
+.cta {
+  margin: var(--space-large) 0;
+}
+
+@media only screen and (max-width: 400px) {
+  .introduction {
+    --introduction--maximum-vertical-margin: var(--space-large);
+  }
+}
+
+@media only screen and (max-width: 240px) {
+  .introduction {
+    --introduction--maximum-vertical-margin: var(--space-base);
+  }
+}

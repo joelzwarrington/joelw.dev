@@ -4,6 +4,7 @@ module.exports = {
   moduleNameMapper: {
     "\\.css$": "identity-obj-proxy",
     "^@/components(.*)$": "<rootDir>/src/components$1",
+    "^@/features(.*)$": "<rootDir>/src/features$1",
   },
   setupFilesAfterEnv: ["./jestConfig.js"],
 
