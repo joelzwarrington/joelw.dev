@@ -1,9 +1,0 @@
-.author {
-  display: flex;
-  gap: var(--space-small);
-  align-items: center;
-}
-
-.author p {
-  color: var(--color-text--reverse);
-}
