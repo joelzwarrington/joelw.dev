@@ -76,8 +76,8 @@ export function Job() {
 export function CTA() {
   return (
     <div className={styles.cta}>
-      <Link href="/blog">
-        <Button label="Check out my blog" />
+      <Link href="/contact">
+        <Button label="Get in touch" />
       </Link>
     </div>
   );
