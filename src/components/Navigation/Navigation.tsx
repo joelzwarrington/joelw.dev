@@ -12,9 +12,6 @@ export function Navigation() {
         </Link>
       </div>
       <div className={styles.links}>
-        <Link href="/about">
-          <Button label="About" type="tertiary" variation="subtle" />
-        </Link>
         <Link href="/contact">
           <Button label="Contact" type="tertiary" variation="subtle" />
         </Link>
