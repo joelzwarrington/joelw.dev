@@ -1,0 +1,36 @@
+.container,
+.container h2,
+.container p {
+  color: var(--color-surface--reverse) !important;
+}
+
+.container > a {
+  border: 0;
+  border-radius: var(--radius-larger);
+}
+
+.cover {
+  max-width: 100%;
+  max-height: calc(var(--space-extravagant) * 6);
+}
+
+.content {
+  display: flex;
+  margin: var(--space-base) var(--space-base);
+  padding-bottom: var(--space-base);
+}
+
+.content > :first-child {
+  margin-right: var(--space-base);
+}
+
+.content > :last-child {
+  width: 100%;
+}
+
+.extra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-small);
+}
