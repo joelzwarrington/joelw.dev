@@ -51,7 +51,7 @@ export function Description() {
   return (
     <div className={styles.description}>
       <Text>
-        I am a software engineer and scrum master specializing in building
+        I am a software engineer specializing in building
         exceptional software products which deliver value to users. Right now
         I&apos;m making Commerce better at <Job />.
       </Text>
