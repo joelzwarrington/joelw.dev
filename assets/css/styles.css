@@ -40,8 +40,8 @@
     grid-area: footer;
     @apply bg-white mt-auto py-4;
   }
-  
-  @media only screen and (min-width: 600px) {
+
+  @media (min-width: 768px) {
     body {
       grid-template-columns: auto 1fr;
       grid-template-rows: 1fr auto;

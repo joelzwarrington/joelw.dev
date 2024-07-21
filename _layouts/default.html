@@ -4,8 +4,8 @@
   {% include head.html %}
   <body>
     <header class="md:max-w-64">
-      <nav class="sticky top-2 m-4 mb-12">
-        <a href="/" class="group">
+      <nav class="sticky top-2 mt-4 mb-12 md:m-4">
+        <a href="/" class="block w-fit group">
           <div class="w-fit p-1 rounded-full bg-black group-hover:emphasized">
             <img class="inline-block h-12 w-12 rounded-full" src="/assets/images/avatar.webp" alt="Joel Warrington's avatar">
           </div>
@@ -27,7 +27,12 @@
         <div role="list" class="mt-4 flex items-center gap-2">
           {% include socials.html %}
         </div>
-      </mav>
+        <div role="list" class="m-4">
+          <a class="block" href="#experience">Experience</a>
+          <a class="block" href="#blog">Blog</a>
+          <a class="block" href="#projects">Projects</a>
+        </div>
+      </nav>
     </header>
     <main>{{ content }}</main>
     <footer>
