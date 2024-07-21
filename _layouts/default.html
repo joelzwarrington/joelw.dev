@@ -4,7 +4,7 @@
   {% include head.html %}
   <body>
     <header class="md:max-w-64">
-      <nav class="sticky top-2 mt-4 mb-12 md:m-4">
+      <div class="sticky top-2 mt-4 mb-12 md:m-4">
         <a href="/" class="block w-fit group">
           {% if page.url == "/" %}
             <h1 class="w-fit font-sans font-black text-lg text-black mt-2 group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ site.title }}</h1>
@@ -21,15 +21,15 @@
           </p>
         </section>
 
-        <div role="list" class="mt-4 flex items-center gap-2">
+        <nav class="mt-4 flex items-center gap-2" aria-label="Social Links">
           {% include socials.html %}
-        </div>
-        <div role="list" class="m-4">
-          <a role="listitem" class="block" href="#experience">Experience</a>
-          <a role="listitem" class="block" href="/blog">Blog</a>
-          <a role="listitem" class="block" href="#projects">Projects</a>
-        </div>
-      </nav>
+        </nav>
+        <nav class="m-4" aria-label="Main">
+          <a class="block" href="#experience">Experience</a>
+          <a class="block" href="/blog">Blog</a>
+          <a class="block" href="#projects">Projects</a>
+        </nav>
+      </div>
     </header>
     <main>{{ content }}</main>
     <footer>
