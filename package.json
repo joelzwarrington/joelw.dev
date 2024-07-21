@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build:css": "pnpm tailwindcss -i ./assets/css/styles.css -o ./assets/css/dist.css --minify"
+  },
 	"devDependencies": {
 		"tailwindcss": "^3.4.1"
 	}

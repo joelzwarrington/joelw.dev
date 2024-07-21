@@ -2,11 +2,38 @@
 
 <html lang="en" class="bg-white">
   {% include head.html %}
-  <body class="mx-auto max-w-7xl px-4">
-    <div class="mx-auto max-w-2xl flex flex-col min-h-dvh">
-      {% include header.html %}
-      <main>{{ content }}</main>
-      {% include footer.html %}
-    </div>
+  <body>
+    <header class="md:max-w-64">
+      <nav class="sticky top-2 m-4 mb-12">
+        <a href="/" class="group">
+          <div class="w-fit p-1 rounded-full bg-black group-hover:emphasized">
+            <img class="inline-block h-12 w-12 rounded-full" src="/assets/images/avatar.webp" alt="Joel Warrington's avatar">
+          </div>
+          {% if page.url == "/" %}
+            <h1 class="w-fit font-sans font-black text-lg text-black mt-2 group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ site.title }}</h1>
+          {% else %}
+            <p class="w-fit font-sans font-black text-lg text-black mt-2 group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ site.title }}</p>
+          {% endif %}
+        </a>
+        <p class="font-serif italic text-slate-800 text-sm">{{ site.description }}</p>
+
+        <section class="my-2">
+          <h2 class="sr-only">About</h2>
+          <p class="text-slate-900 text-sm ">
+            Building interactive web experiences to solve problems.
+          </p>
+        </section>
+
+        <div role="list" class="mt-4 flex items-center gap-2">
+          {% include socials.html %}
+        </div>
+      </mav>
+    </header>
+    <main>{{ content }}</main>
+    <footer>
+      <div class="mt-8 md:order-1 md:mt-0">
+        <p class="text-center text-xs leading-5 text-gray-500">&copy; 2024 {{ site.title }}</p>
+      </div>
+    </footer>
   </body>
 </html>
