@@ -18,7 +18,7 @@
   }
   
   body {
-    @apply mx-auto max-w-2xl grid min-h-dvh gap-4;
+    @apply mx-auto max-w-3xl grid min-h-dvh gap-4;
   
     grid-template-columns: auto;
     grid-template-rows: auto 1fr auto;
