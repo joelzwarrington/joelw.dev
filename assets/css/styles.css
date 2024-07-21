@@ -6,6 +6,11 @@
   .emphasized {
     @apply bg-gradient-to-r from-fuchsia-700 via-purple-800 to-cyan-700 animate-emphasis;
   }
+
+  .blurred {
+    @apply backdrop-blur-sm;
+    mask: linear-gradient(black, black, transparent);
+  }
 }
 
 @layer base {
