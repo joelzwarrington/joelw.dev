@@ -12,27 +12,29 @@ layout: default
       </a>
       <ul role="list" class="my-2 space-y-6">
         <li role="listitem" class="relative flex gap-x-4">
-          <div class="absolute -bottom-6 left-0 top-0 flex w-6 justify-center">
+          <div class="absolute -bottom-6 left-0 top-0 flex w-6 justify-center" aria-hidden="true">
             <div class="w-px bg-gray-200"></div>
           </div>
-          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
+          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white" aria-hidden="true">
             <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
           </div>
           <div class="flex-auto py-0.5">
             <h3 class="italic font-semibold font-serif text-slate-900 mb-1">Senior Software Engineer <span class="sr-only">at Shopify</span></h3>
-            <p class="my-1 text-xs leading-5 text-gray-500">
+            <p class="my-1 text-xs leading-5 text-slate-500">
               Since <time datetime="2024-01-01">Jan 2024</time>
             </p>
-            <p class="mb-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore iure, hic
-              repudiandae maxime alias provident reiciendis, esse doloribus ipsa modi
-              reprehenderit dolorum tenetur iusto rem minima ad, id accusantium explicabo.
-            </p>
-            <p class="my-4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. At accusantium
-              eligendi, neque officiis minus illo omnis magnam nesciunt vitae ratione ex
-              molestias voluptates sequi consequuntur quae, repellat, atque ut fugit?
-            </p>
+            <ul role="list" class="my-1 list-disc list-inside text-sm text-slate-800">
+              <li role="listitem">
+                Launched pricing change to the Plus plan for new and existing merchants, and integrated with a contract
+                management tool to automate contract amendment agreements via DocuSign
+              </li>
+            </ul>
+            <ul role="list" class="mt-4 flex flex-wrap gap-2">
+              <li role="listitem">{% include lang/rails.html %}</li>
+              <li role="listitem">{% include lang/gql.html %}</li>
+              <li role="listitem">{% include lang/react.html %}</li>
+              <li role="listitem">{% include lang/ts.html %}</li>
+            </ul>
           </div>
         </li>
         <li role="listitem" class="relative flex gap-x-4">
@@ -44,18 +46,31 @@ layout: default
             <p class="my-1 text-xs leading-5 text-gray-500">
               <time datetime="2022-04-01">April 2022</time> → <time datetime="2024-01-01">Jan 2024</time>
             </p>
-            <p class="mb-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore iure, hic
-              repudiandae maxime alias provident reiciendis, esse doloribus ipsa modi
-              reprehenderit dolorum tenetur iusto rem minima ad, id accusantium explicabo.
-            </p>
-            <p class="my-4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. At accusantium
-              eligendi, neque officiis minus illo omnis magnam nesciunt vitae ratione ex
-              molestias voluptates sequi consequuntur quae, repellat, atque ut fugit?
-            </p>
+            <ul role="list" class="space-y-2 my-1 list-disc list-inside text-sm text-slate-800">
+              <li role="listitem">
+                Launched enterprise upgrade funnels which has led to over <strong class="font-semibold">500+</strong> merchant upgrades, and <strong class="font-semibold">$20M+</strong> in
+                annual recurring revenue
+              </li>
+              <li role="listitem">
+                Built automation tools for Sales to easily onboard new merchants
+              </li>
+              <li role="listitem">
+                Improved A/B testing functionality on our <a href="https://shopify.com" class="underline underline-offset-4">marketing site</a> to improve scalability, developer experience and enable concurrency of experiments.
+              </li>
+              <li role="listitem">
+                Improved conversion rates of popular landing pages on our <a href="https://shopify.com" class="underline underline-offset-4">marketing site</a> via A/B experiments resulting in <strong class="font-semibold">17,000+</strong> new merchants
+              </li>
+              <li role="listitem">
+                Conducted coding interviews with potential engineering candidates, and mentored intern and junior engineers
+              </li>
+            </ul>
+            <ul role="list" class="mt-4 flex flex-wrap gap-2">
+              <li role="listitem">{% include lang/rails.html %}</li>
+              <li role="listitem">{% include lang/gql.html %}</li>
+              <li role="listitem">{% include lang/react.html %}</li>
+              <li role="listitem">{% include lang/ts.html %}</li>
+            </ul>
           </div>
-          
         </li>
       </ul>
     </li>
@@ -69,20 +84,47 @@ layout: default
           <div class="ml-10 py-0.5">
             <h3 class="italic font-semibold font-serif text-slate-900 mb-1">Software Engineer <span class="sr-only">at Jobber</span></h3>
             <p class="my-1 text-xs leading-5 text-gray-500">
-              <time datetime="2022-04-01">April 2022</time> → <time datetime="2024-01-01">Jan 2024</time>
+              <time datetime="2022-03-01">Mar 2021</time> → <time datetime="2024-03-01">Mar 2022</time>
             </p>
-            <p class="mb-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore iure, hic
-              repudiandae maxime alias provident reiciendis, esse doloribus ipsa modi
-              reprehenderit dolorum tenetur iusto rem minima ad, id accusantium explicabo.
-            </p>
-            <p class="my-4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. At accusantium
-              eligendi, neque officiis minus illo omnis magnam nesciunt vitae ratione ex
-              molestias voluptates sequi consequuntur quae, repellat, atque ut fugit?
-            </p>
+            <ul role="list" class="space-y-2 my-1 list-disc list-inside text-sm text-slate-800">
+              <li role="listitem">
+                Led the development and implementation of our <a href="https://developer.getjobber.com" class="underline underline-offset-4">third-party developer platform</a> and public API, providing customers with the ability to easily integrate their favorite products and creating an additional revenue stream for Jobber
+              </li>
+              <li role="listitem">
+                Published GraphQL API design guidelines for the engineering organization, and organized workshops with other teams to model their domain systems
+              </li>
+            </ul>
+            <ul role="list" class="mt-4 flex flex-wrap gap-2">
+              <li role="listitem">{% include lang/rails.html %}</li>
+              <li role="listitem">{% include lang/gql.html %}</li>
+              <li role="listitem">{% include lang/react.html %}</li>
+              <li role="listitem">{% include lang/ts.html %}</li>
+            </ul>
           </div>
-          
+        </li>
+      </ul>
+    </li>
+    <li role="listitem">
+      <p class="py-2 text-lg font-bold text-black flex items-center gap-2">Elantis Solutions Inc.</p>
+      <ul role="list" class="my-2 space-y-6">
+        <li role="listitem">
+          <div class="ml-10 py-0.5">
+            <h3 class="italic font-semibold font-serif text-slate-900 mb-1">Software Engineer <span class="sr-only">at Elantis Solutions Inc.</span></h3>
+            <p class="my-1 text-xs leading-5 text-gray-500">
+              <time datetime="2019-01-01">Jan 2019</time> → <time datetime="2021-02-01">Feb 2022</time>
+            </p>
+            <ul role="list" class="space-y-2 my-1 list-disc list-inside text-sm text-slate-800">
+              <li role="listitem">
+                Built web applications optimizing internal business processes for multiple clients
+              </li>
+            </ul>
+            <ul role="list" class="mt-4 flex flex-wrap gap-2">
+              <li role="listitem">{% include lang/csharp.html %}</li>
+              <li role="listitem">{% include lang/react.html %}</li>
+              <li role="listitem">{% include lang/ts.html %}</li>
+              <li role="listitem">{% include lang/js.html %}</li>
+            </ul>
+          </div>
         </li>
       </ul>
     </li>
