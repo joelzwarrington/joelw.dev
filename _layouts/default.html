@@ -24,14 +24,14 @@
         <nav class="mt-4 flex items-center gap-2" aria-label="Social Links">
           {% include socials.html %}
         </nav>
-        <nav class="m-4" aria-label="Main">
-          <a class="block" href="#experience">Experience</a>
-          <a class="block" href="/blog">Blog</a>
-          <a class="block" href="#projects">Projects</a>
+        <nav class="my-4 flex gap-2 items-stretch" aria-label="Main">
+            <a href="/#experience" class="block w-fit rounded-md px-2 py-1 text-xs font-medium bg-slate-50 text-slate-800 hover:emphasized hover:text-white">Experience</a>
+            <a href="/#projects" class="block w-fit rounded-md px-2 py-1 text-xs font-medium bg-slate-50 text-slate-800 hover:emphasized hover:text-white">Projects</a>
+            <a href="/blog" class="block w-fit rounded-md px-2 py-1 text-xs font-medium bg-slate-50 text-slate-800 hover:emphasized hover:text-white">Blog</a>
         </nav>
       </div>
     </header>
-    <main>{{ content }}</main>
+    <main class="relative">{{ content }}</main>
     <footer>
       <div class="mt-8 md:order-1 md:mt-0">
         <p class="text-center text-xs leading-5 text-gray-500">&copy; 2024 {{ site.title }}</p>
