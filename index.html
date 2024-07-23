@@ -15,7 +15,7 @@ layout: default
           <div class="absolute -bottom-6 left-0 top-0 flex w-6 justify-center" aria-hidden="true">
             <div class="w-px bg-gray-200"></div>
           </div>
-          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white" aria-hidden="true">
+          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-gray-50" aria-hidden="true">
             <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
           </div>
           <div class="flex-auto py-0.5">
@@ -30,15 +30,15 @@ layout: default
               </li>
             </ul>
             <ul role="list" class="mt-4 flex flex-wrap gap-2">
-              <li role="listitem">{% include lang/rails.html %}</li>
-              <li role="listitem">{% include lang/gql.html %}</li>
-              <li role="listitem">{% include lang/react.html %}</li>
-              <li role="listitem">{% include lang/ts.html %}</li>
+              <li role="listitem">{% include tags/rails.html %}</li>
+              <li role="listitem">{% include tags/gql.html %}</li>
+              <li role="listitem">{% include tags/react.html %}</li>
+              <li role="listitem">{% include tags/ts.html %}</li>
             </ul>
           </div>
         </li>
         <li role="listitem" class="relative flex gap-x-4">
-          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
+          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-gray-50">
             <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
           </div>
           <div class="flex-auto py-0.5">
@@ -65,10 +65,10 @@ layout: default
               </li>
             </ul>
             <ul role="list" class="mt-4 flex flex-wrap gap-2">
-              <li role="listitem">{% include lang/rails.html %}</li>
-              <li role="listitem">{% include lang/gql.html %}</li>
-              <li role="listitem">{% include lang/react.html %}</li>
-              <li role="listitem">{% include lang/ts.html %}</li>
+              <li role="listitem">{% include tags/rails.html %}</li>
+              <li role="listitem">{% include tags/gql.html %}</li>
+              <li role="listitem">{% include tags/react.html %}</li>
+              <li role="listitem">{% include tags/ts.html %}</li>
             </ul>
           </div>
         </li>
@@ -95,10 +95,10 @@ layout: default
               </li>
             </ul>
             <ul role="list" class="mt-4 flex flex-wrap gap-2">
-              <li role="listitem">{% include lang/rails.html %}</li>
-              <li role="listitem">{% include lang/gql.html %}</li>
-              <li role="listitem">{% include lang/react.html %}</li>
-              <li role="listitem">{% include lang/ts.html %}</li>
+              <li role="listitem">{% include tags/rails.html %}</li>
+              <li role="listitem">{% include tags/gql.html %}</li>
+              <li role="listitem">{% include tags/react.html %}</li>
+              <li role="listitem">{% include tags/ts.html %}</li>
             </ul>
           </div>
         </li>
@@ -119,10 +119,10 @@ layout: default
               </li>
             </ul>
             <ul role="list" class="mt-4 flex flex-wrap gap-2">
-              <li role="listitem">{% include lang/csharp.html %}</li>
-              <li role="listitem">{% include lang/react.html %}</li>
-              <li role="listitem">{% include lang/ts.html %}</li>
-              <li role="listitem">{% include lang/js.html %}</li>
+              <li role="listitem">{% include tags/csharp.html %}</li>
+              <li role="listitem">{% include tags/react.html %}</li>
+              <li role="listitem">{% include tags/ts.html %}</li>
+              <li role="listitem">{% include tags/js.html %}</li>
             </ul>
           </div>
         </li>
@@ -133,24 +133,32 @@ layout: default
 
 <section id="projects" class="py-4">
   <h2 class="sticky top-0 blurred -m-2 px-2 py-4 text-lg font-bold text-black">Projects</h2>
-  <p class="my-4">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore iure, hic
-    repudiandae maxime alias provident reiciendis, esse doloribus ipsa modi
-    reprehenderit dolorum tenetur iusto rem minima ad, id accusantium explicabo.
-  </p>
-  <p class="my-4">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. At accusantium
-    eligendi, neque officiis minus illo omnis magnam nesciunt vitae ratione ex
-    molestias voluptates sequi consequuntur quae, repellat, atque ut fugit?
-  </p>
-  <p class="my-4">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore iure, hic
-    repudiandae maxime alias provident reiciendis, esse doloribus ipsa modi
-    reprehenderit dolorum tenetur iusto rem minima ad, id accusantium explicabo.
-  </p>
-  <p class="my-4">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. At accusantium
-    eligendi, neque officiis minus illo omnis magnam nesciunt vitae ratione ex
-    molestias voluptates sequi consequuntur quae, repellat, atque ut fugit?
-  </p>
+  <ul class="space-y-4">
+    {% for project in site.projects %}
+      <li>
+        <div class="relative divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow-md">
+          <div class="px-4 py-3.5">
+            <img src="assets/images/projects/homesuiteapartment.svg" class="h-8 inline-block" alt="HomeSuiteApartment Logo" />
+            <a href="{{ project.permalink }}">
+              <span class="absolute inset-x-0 -top-px bottom-0"></span>
+              <span class="sr-only">{{ project.title }}</span>
+            </a>
+          </div>
+          <div class="px-4 py-5 sm:p-6">
+            {{ project.excerpt }}
+          </div>
+          {% if project.tags != empty  %}
+            <div class="px-4 py-3.5">
+              <ul role="list" class="flex flex-wrap gap-2">
+                {% for tag in project.tags %}
+                  {% assign include_path = "tags/" | append: tag | append: ".html" %}
+                  <li role="listitem">{% include {{include_path}} %}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 </section>

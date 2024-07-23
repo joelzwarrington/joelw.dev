@@ -44,7 +44,7 @@
   
   footer {
     grid-area: footer;
-    @apply bg-white mt-auto py-4;
+    @apply mt-auto py-4;
   }
 
   @media (min-width: 768px) {

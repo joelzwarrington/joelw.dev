@@ -3,3 +3,10 @@ description: Senior Software Engineer
 baseurl: ""
 url: https://joelw.dev
 contact: mailto:joelw@hey.com
+
+collections:
+  projects:
+    output: true
+
+kramdown:
+  parse_block_html: true
