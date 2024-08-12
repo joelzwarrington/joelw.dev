@@ -10,3 +10,4 @@ collections:
 
 kramdown:
   parse_block_html: true
+  syntax_highlighter: rouge
