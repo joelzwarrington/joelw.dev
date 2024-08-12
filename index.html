@@ -23,12 +23,6 @@ layout: default
             <p class="my-1 text-xs leading-5 text-slate-500">
               Since <time datetime="2024-01-01">Jan 2024</time>
             </p>
-            <ul role="list" class="my-1 list-disc list-inside text-sm text-slate-800">
-              <li role="listitem">
-                Launched pricing change to the Plus plan for new and existing merchants, and integrated with a contract
-                management tool to automate contract amendment agreements via DocuSign
-              </li>
-            </ul>
             <ul role="list" class="mt-4 flex flex-wrap gap-2">
               <li role="listitem">{% include tags/rails.html %}</li>
               <li role="listitem">{% include tags/gql.html %}</li>
@@ -139,7 +133,7 @@ layout: default
         <div class="relative divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow-md">
           <div class="px-4 py-3.5">
             <img src="{{ project.logo }}" class="inline-block" alt="{{ project.title }} Logo" width="96px" height="32px"  />
-            <a href="{{ project.permalink }}">
+            <a href="{{ project.external_link }}">
               <span class="absolute inset-x-0 -top-px bottom-0"></span>
               <span class="sr-only">{{ project.title }}</span>
             </a>

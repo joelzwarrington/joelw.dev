@@ -3,6 +3,7 @@ title: HomeSuiteApartment
 logo: /assets/images/projects/homesuiteapartment.svg
 layout: default
 permalink: /projects/homesuiteapartment
+external_link: https://homesuiteapartment.com
 tags:
   - rails
   - tailwind
