@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en" class="bg-gray-50">
+<html lang="en" class="bg-zinc-100">
   {% include head.html %}
-  <body class="bg-gray-50">
+  <body class="bg-zinc-100">
     <header class="md:max-w-64">
-      <div class="sticky top-2 mt-4 mb-12 md:m-4">
+      <div class="sticky top-4">
         <a href="/" class="block w-fit group">
           {% if page.url == "/" %}
             <h1 class="w-fit font-sans font-black text-lg text-black mt-2 group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ site.title }}</h1>
@@ -24,10 +24,10 @@
         <nav class="mt-4 flex items-center gap-2" aria-label="Social Links">
           {% include socials.html %}
         </nav>
-        <nav class="my-4 flex flex-col md:flex-row gap-4 md:gap-2 items-stretch" aria-label="Main">
-            <a href="/#experience" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-slate-800 text-white hover:emphasized hover:text-white">Experience</a>
-            <a href="/#projects" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-slate-800 text-white hover:emphasized hover:text-white">Projects</a>
-            <a href="/#writing" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-slate-800 text-white hover:emphasized hover:text-white">Writing</a>
+        <nav class="hidden my-4 md:flex flex-row gap-4 md:gap-2 items-stretch" aria-label="Main">
+            <a href="/#experience" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-black text-white hover:emphasized hover:text-white">Experience</a>
+            <a href="/#projects" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-black text-white hover:emphasized hover:text-white">Projects</a>
+            <a href="/#writing" class="block w-full md:w-fit text-center rounded-md px-2 py-1 text-base md:text-xs font-medium bg-black text-white hover:emphasized hover:text-white">Writing</a>
         </nav>
       </div>
     </header>

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<section id="experience" class="py-4">
+<section id="experience" class="pb-4">
   <h2 class="sticky top-0 z-10 blurred -m-2 px-2 py-4 text-xl font-bold text-black">Experience</h2>
   <ul role="list" class="space-y-6">
     <li role="listitem">
@@ -15,7 +15,7 @@ layout: default
           <div class="absolute -bottom-6 left-0 top-0 flex w-6 justify-center" aria-hidden="true">
             <div class="w-px bg-gray-200"></div>
           </div>
-          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-gray-50" aria-hidden="true">
+          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-zinc-100" aria-hidden="true">
             <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
           </div>
           <div class="flex-auto py-0.5">
@@ -32,7 +32,7 @@ layout: default
           </div>
         </li>
         <li role="listitem" class="relative flex gap-x-4">
-          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-gray-50">
+          <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-zinc-100">
             <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
           </div>
           <div class="flex-auto py-0.5">
@@ -75,7 +75,7 @@ layout: default
       </a>
       <ul role="list" class="my-2 space-y-6">
         <li role="listitem">
-          <div class="ml-10 py-0.5">
+          <div class="py-0.5">
             <h3 class="italic font-semibold font-serif text-slate-900 mb-1">Software Engineer <span class="sr-only">at Jobber</span></h3>
             <p class="my-1 text-xs leading-5 text-gray-500">
               <time datetime="2022-03-01">Mar 2021</time> → <time datetime="2024-03-01">Mar 2022</time>
@@ -102,7 +102,7 @@ layout: default
       <p class="py-2 text-lg font-bold text-black flex items-center gap-2">Elantis Solutions Inc.</p>
       <ul role="list" class="my-2 space-y-6">
         <li role="listitem">
-          <div class="ml-10 py-0.5">
+          <div class="py-0.5">
             <h3 class="italic font-semibold font-serif text-slate-900 mb-1">Software Engineer <span class="sr-only">at Elantis Solutions Inc.</span></h3>
             <p class="my-1 text-xs leading-5 text-gray-500">
               <time datetime="2019-01-01">Jan 2019</time> → <time datetime="2021-02-01">Feb 2022</time>
@@ -127,31 +127,56 @@ layout: default
 
 <section id="projects" class="py-4">
   <h2 class="sticky top-0 blurred -m-2 px-2 py-4 text-lg font-bold text-black">Projects</h2>
-  <ul class="space-y-4">
-    {% for project in site.projects %}
+  <ul class="space-y-6">
+    {% assign projects = site.projects | sort: 'highlighted' | reverse %}
+    {% for project in projects %}
       <li>
-        <div class="relative divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow-md">
-          <div class="px-4 py-3.5">
-            <img src="{{ project.logo }}" class="inline-block" alt="{{ project.title }} Logo" width="96px" height="32px"  />
-            <a href="{{ project.external_link }}">
-              <span class="absolute inset-x-0 -top-px bottom-0"></span>
-              <span class="sr-only">{{ project.title }}</span>
-            </a>
-          </div>
-          <div class="px-4 py-5 sm:p-6">
-            {{ project.excerpt }}
-          </div>
-          {% if project.tags != empty  %}
-            <div class="px-4 py-3.5">
-              <ul role="list" class="flex flex-wrap gap-2">
-                {% for tag in project.tags %}
-                  {% assign include_path = "tags/" | append: tag | append: ".html" %}
-                  <li role="listitem">{% include {{include_path}} %}</li>
-                {% endfor %}
-              </ul>
+        <article {% if project.highlighted %} data-highlighted {% endif %} class="relative overflow-hidden rounded-lg p-1.5 bg-white shadow-md data-[highlighted]:emphasized">
+          <div class=" p-3 rounded-lg bg-white group">
+            <div class="flex items-center gap-1">
+              {% if project.highlighted %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-purple-800">
+                  <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+              <h3 class="font-semibold">{{ project.title }}</h3>
             </div>
-          {% endif %}
-        </div>
+            <div class="py-1 text-sm text-zinc-600">
+              {{ project.excerpt }}
+            </div>
+            {% if post.tags != empty %}
+              <div class="py-2 flex gap-2 items-end">
+                <ul role="list" class="flex flex-wrap gap-2">
+                  {% for tag in project.tags %}
+                    {% assign include_path = "tags/" | append: tag | append: ".html" %}
+                    <li role="listitem">{% include {{include_path}} %}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <div class="flex gap-2 items-end justify-between">
+              <span class="isolate inline-flex rounded-md shadow-sm">
+                {% if project.github %}
+                <a href="{{ project.github }}" class="relative inline-flex items-center gap-x-1.5 rounded-l-md bg-white px-2 py-1.5 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-zinc-100 focus:z-10">
+                  <svg class="h-4 w-4 fill-[#24292F]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                  </svg>
+                  GitHub
+                </a>
+                {% endif %}
+                <a href="{{ project.view }}" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md {% if project.github == nil %}rounded-l-md{% endif %} bg-white px-2 py-1.5 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-zinc-100 focus:z-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd" d="M4.22 11.78a.75.75 0 0 1 0-1.06L9.44 5.5H5.75a.75.75 0 0 1 0-1.5h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V6.56l-5.22 5.22a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                  </svg>
+                  View
+                </a>
+              </span>
+
+              <a href="{{ project.permalink }}" class="px-1.5 py-1 rounded bg-white ring-1 ring-inset ring-gray-300 text-sm font-semibold leading-6 text-gray-900 hover:bg-zinc-100">Learn more <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
       </li>
     {% endfor %}
   </ul>
@@ -162,18 +187,16 @@ layout: default
   <ul class="space-y-4">
     {% for post in site.posts %}
       <li>
-        <article class="relative">
+        <article class="relative p-3 rounded-lg shadow-md bg-white group">
           <a class="font-semibold" href="{{ post.permalink }}">
             <span class="absolute inset-x-0 -top-px bottom-0"></span>
-            <span>{{ post.title }}</span>
+            <h3 class="group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ post.title }}</h3>
           </a>
-          <div class="flex gap-1 text-xs text-zinc-500">
-            <time datetime="{{ post.date }}">{{ post.date | date_to_long_string }}</time>
-            <span>&bull;</span>
+          <div class="py-1 text-sm text-zinc-600">
             {{ post.excerpt }}
           </div>
           {% if post.tags != empty  %}
-            <div class="py-3.5">
+            <div class="py-2 flex gap-2 items-end">
               <ul role="list" class="flex flex-wrap gap-2">
                 {% for tag in post.tags %}
                   {% assign include_path = "tags/" | append: tag | append: ".html" %}
@@ -182,6 +205,7 @@ layout: default
               </ul>
             </div>
           {% endif %}
+          <time datetime="{{ post.date }}" class="text-xs text-zinc-400">{{ post.date | date_to_long_string }}</time>
         </article>
       </li>
     {% endfor %}
