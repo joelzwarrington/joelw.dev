@@ -126,7 +126,7 @@ layout: default
 </section>
 
 <section id="projects" class="py-4">
-  <h2 class="sticky top-0 blurred -m-2 px-2 py-4 text-lg font-bold text-black">Projects</h2>
+  <h2 class="sticky top-0 z-10 blurred -m-2 px-2 py-4 text-xl font-bold text-black">Projects</h2>
   <ul class="space-y-6">
     {% assign projects = site.projects | sort: 'highlighted' | reverse %}
     {% for project in projects %}
@@ -183,7 +183,7 @@ layout: default
 </section>
 
 <section id="writing" class="py-4">
-  <h2 class="sticky top-0 blurred -m-2 px-2 py-4 text-lg font-bold text-black">Writing</h2>
+  <h2 class="sticky top-0 z-10 blurred -m-2 px-2 py-4 text-xl font-bold text-black">Writing</h2>
   <ul class="space-y-4">
     {% for post in site.posts %}
       <li>
