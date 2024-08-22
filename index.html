@@ -141,7 +141,7 @@ layout: default
               {% endif %}
               <h3 class="font-semibold">{{ project.title }}</h3>
             </div>
-            <div class="py-1 text-sm text-zinc-600">
+            <div class="py-1 text-sm text-zinc-600 prose">
               {{ project.excerpt }}
             </div>
             {% if post.tags != empty %}
@@ -192,7 +192,7 @@ layout: default
             <span class="absolute inset-x-0 -top-px bottom-0"></span>
             <h3 class="group-hover:emphasized group-hover:bg-clip-text group-hover:text-transparent">{{ post.title }}</h3>
           </a>
-          <div class="py-1 text-sm text-zinc-600">
+          <div class="py-1 text-sm text-zinc-600 prose">
             {{ post.excerpt }}
           </div>
           {% if post.tags != empty  %}

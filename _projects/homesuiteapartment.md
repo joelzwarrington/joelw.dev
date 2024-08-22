@@ -1,10 +1,9 @@
 ---
 title: HomeSuiteApartment
 logo: /assets/images/projects/homesuiteapartment.svg
-layout: default
+layout: project
 permalink: /projects/homesuiteapartment
 view: https://homesuiteapartment.com
-highlighted: true
 tags:
   - rails
   - tailwind
