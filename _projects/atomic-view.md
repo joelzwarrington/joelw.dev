@@ -2,7 +2,7 @@
 title: AtomicView
 layout: project
 permalink: /projects/atomic-view
-github: https://github.com/joelzwarrington/atomic-view
+github: https://github.com/joelzwarrington/atomic_view
 view: https://atomic-view.joelw.dev
 highlighted: true
 tags:
