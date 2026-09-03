@@ -1,0 +1,30 @@
+---
+import { experience } from '../data/experience';
+import RoleEntry from './RoleEntry.astro';
+
+const latest = experience[0];
+---
+
+<section class="block" id="experience">
+  <h2 class="section-title"><a class="pilcrow" href="#experience" aria-label="Link to this section">¶</a>Experience</h2>
+
+  {latest && <RoleEntry role={latest} />}
+
+  <p class="see-all"><a class="hover-underline" href="/experience">See all experience →</a></p>
+</section>
+
+<style>
+  .block {
+    max-width: var(--col);
+    margin: 5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .see-all {
+    margin-top: 1.75rem;
+    font-size: 0.85rem;
+  }
+  .see-all a {
+    color: var(--fg);
+  }
+</style>

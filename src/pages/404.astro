@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not Found">
+  <div class="page">
+    <p class="eyebrow">404</p>
+    <h1>Page not found.</h1>
+    <p><a href="/">Back home →</a></p>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: var(--col);
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--size-h1);
+    margin: 0.75rem 0 1.5rem;
+  }
+  a {
+    color: var(--fg);
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  a:hover,
+  a:focus-visible {
+    text-decoration-color: var(--fg);
+  }
+</style>

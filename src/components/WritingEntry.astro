@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatTags } from '../data/tags';
+
+interface Props {
+  post: CollectionEntry<'writing'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="entry">
+  <time datetime={post.data.date.toISOString()}>
+    {post.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+  </time>
+  <p class="entry-title">
+    <a class="hover-underline" href={`/writing/${post.data.slug}`}>{post.data.title}</a>
+  </p>
+  <p class="entry-excerpt">{post.data.excerpt}</p>
+  {post.data.tags.length > 0 && <p class="tags-line">{formatTags(post.data.tags)}</p>}
+</article>
+
+<style>
+  .entry time {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .entry-title {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-display);
+    font-size: var(--size-h3);
+  }
+  .entry-title a {
+    color: var(--fg);
+  }
+  .entry-excerpt {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: var(--size-small);
+  }
+  .tags-line {
+    margin-top: 0.7rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import WritingEntry from '../../components/WritingEntry.astro';
+
+const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title="Writing">
+  <div class="page">
+    <div class="title-row">
+      <h1 class="section-title" id="writing">
+        <a class="pilcrow" href="#writing" aria-label="Link to this section">¶</a>Writing
+      </h1>
+      <a class="hover-underline" href="/rss.xml">RSS</a>
+    </div>
+
+    <div class="entries">
+      {
+        posts.map((post) => (
+          <div class="entry-row">
+            <WritingEntry post={post} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: var(--col);
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .title-row a {
+    color: var(--muted);
+    font-size: var(--size-eyebrow);
+  }
+  .title-row a:hover {
+    color: var(--fg);
+  }
+
+  .title-row .section-title {
+    margin: 0;
+  }
+
+  .entries {
+    border-top: 1px solid var(--border);
+  }
+  .entry-row {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+</style>

@@ -1,0 +1,248 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { formatTags } from '../../data/tags';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const otherPosts = (await getCollection('writing'))
+  .filter((p) => p.data.slug !== post.data.slug)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title={post.data.title} description={post.data.excerpt}>
+  <div class="page">
+    <div class="eyebrow-row">
+      <a class="hover-underline" href="/writing">Writing</a>
+      <span class="sep">·</span>
+      <time datetime={post.data.date.toISOString()}>
+        {post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </time>
+    </div>
+    <h1 class="post-title">{post.data.title}</h1>
+    {post.data.tags.length > 0 && <p class="tags-line">{formatTags(post.data.tags)}</p>}
+
+    <article>
+      <Content />
+    </article>
+
+    {
+      otherPosts.length > 0 && (
+        <div class="more-writing">
+          <span class="eyebrow">More writing</span>
+          {otherPosts.map((p) => (
+            <div class="more-entry">
+              <span class="entry-date">{p.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+              <div>
+                <h3>
+                  <a class="hover-underline" href={`/writing/${p.data.slug}`}>{p.data.title}</a>
+                </h3>
+                <p>{p.data.excerpt}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: var(--col);
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .eyebrow-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .eyebrow-row a {
+    font-size: var(--size-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .eyebrow-row a:hover {
+    color: var(--fg);
+  }
+  .eyebrow-row time {
+    font-size: var(--size-eyebrow);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow-row .sep {
+    color: var(--border);
+  }
+
+  h1.post-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--size-h1);
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+
+  .tags-line {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 3rem;
+  }
+
+  article {
+    line-height: 1.7;
+  }
+
+  article :global(p) {
+    margin: 1.2em 0;
+  }
+
+  article :global(h2) {
+    position: relative;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: normal;
+    font-size: var(--size-h2);
+    margin: 2.6em 0 0.9em;
+    text-wrap: balance;
+    scroll-margin-top: 5rem;
+  }
+  article :global(h3) {
+    position: relative;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--size-h3);
+    margin: 2em 0 0.7em;
+    text-wrap: balance;
+    scroll-margin-top: 5rem;
+  }
+
+  article :global(ul) {
+    list-style: none;
+    margin: 1.2em 0;
+    padding: 0;
+  }
+  article :global(li) {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-top: 0.55rem;
+  }
+  article :global(li)::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+  article :global(ol) {
+    margin: 1.2em 0;
+    padding-left: 1.3rem;
+  }
+  article :global(ol li) {
+    padding-left: 0.3rem;
+    margin-top: 0.55rem;
+  }
+  article :global(ol li)::before {
+    content: none;
+  }
+
+  article :global(blockquote) {
+    margin: 1.6em 0;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--border);
+    font-style: italic;
+    color: var(--muted);
+  }
+  article :global(blockquote p) {
+    margin: 0;
+  }
+
+  article :global(strong) {
+    font-weight: 700;
+    color: var(--fg);
+  }
+  article :global(a) {
+    color: var(--fg);
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  article :global(a:hover),
+  article :global(a:focus-visible) {
+    text-decoration-color: var(--fg);
+  }
+
+  article :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  article :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+  }
+
+  article :global(pre) {
+    margin: 0.6em 0 1.6em;
+    overflow-x: auto;
+    background: var(--code-fill);
+    border-radius: 4px;
+    padding: 1rem 1.1rem;
+  }
+  article :global(pre code) {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .more-writing {
+    margin-top: 5rem;
+  }
+  .more-writing .eyebrow {
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+  .more-entry {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .more-entry + .more-entry {
+    margin-top: 1.5rem;
+  }
+  .more-entry .entry-date {
+    flex: none;
+    width: 5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.25rem;
+  }
+  .more-entry h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.15rem;
+  }
+  .more-entry h3 a {
+    color: var(--fg);
+  }
+  .more-entry p {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: var(--size-small);
+  }
+</style>

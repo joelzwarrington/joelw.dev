@@ -1,0 +1,150 @@
+---
+import '../styles/tokens.css';
+import SiteNav from '../components/SiteNav.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import SocialIcon from '../components/icons/SocialIcon.astro';
+import { site } from '../data/site';
+import { socials } from '../data/socials';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${site.title} — ${title}` : site.title;
+const canonicalUrl = new URL(Astro.url.pathname, site.url);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="data:," />
+    <link rel="alternate" type="application/rss+xml" title={site.title} href="/rss.xml" />
+
+    <script is:inline>
+      // Runs before paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="theme-toggle-fixed">
+      <ThemeToggle />
+    </div>
+
+    <header class="site-header">
+      <a class="wordmark hover-underline" href="/">
+        {site.domain}
+      </a>
+      <SiteNav />
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <p>&copy; {new Date().getFullYear()} {site.title}</p>
+      <nav class="footer-links" aria-label="Footer">
+        <div class="socials" aria-label="Social links">
+          {
+            socials.map((social) => (
+              <a href={social.url} aria-label={social.name}>
+                <SocialIcon name={social.icon} />
+              </a>
+            ))
+          }
+        </div>
+        <a class="hover-underline" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="hover-underline" href="/rss.xml">RSS</a>
+      </nav>
+    </footer>
+
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "00437b4959284cf5bd8e171fb3d21d4f"}'></script>
+  </body>
+</html>
+
+<style is:global>
+  .theme-toggle-fixed {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    z-index: 20;
+  }
+
+  .site-header {
+    max-width: var(--col);
+    margin: 0 auto;
+    /* extra right padding keeps content clear of the fixed toggle at narrow widths */
+    padding: 1.5rem calc(1.5rem + 3rem) 1.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .site-header .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--fg);
+  }
+
+  .site-footer {
+    max-width: var(--col);
+    margin: 4rem auto 0;
+    padding: 2rem 1.5rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: var(--size-small);
+    color: var(--muted);
+  }
+  .site-footer .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .site-footer .socials {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .site-footer .socials svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+  .site-footer a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    color: var(--fg);
+  }
+</style>

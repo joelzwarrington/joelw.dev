@@ -1,0 +1,35 @@
+---
+import { experience } from '../data/experience';
+import RoleEntry from './RoleEntry.astro';
+---
+
+<section class="block" id="experience">
+  <h2 class="section-title"><a class="pilcrow" href="#experience" aria-label="Link to this section">¶</a>Experience</h2>
+
+  <ul class="roles">
+    {
+      experience.map((role) => (
+        <li class="role-item">
+          <RoleEntry role={role} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .block {
+    max-width: var(--col);
+    margin: 5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .role-item + .role-item {
+    margin-top: 2.5rem;
+  }
+</style>
