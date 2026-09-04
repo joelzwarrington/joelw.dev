@@ -3,7 +3,6 @@ title: AtomicView
 description: Component library built for Ruby on Rails with first-class support for ActionView using ViewComponent.
 github: https://github.com/joelzwarrington/atomic-view
 view: https://atomic-view.joelw.dev
-highlighted: true
 tags: [ruby, rails, tailwind]
 ---
 
