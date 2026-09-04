@@ -9,10 +9,24 @@ export interface Role {
 
 export const experience: Role[] = [
   {
+    title: "Software Engineer, Docs",
+    company: { name: "Stripe", url: "https://stripe.com" },
+    start: "2025-03-01",
+    end: null,
+    highlights: [
+      "Building the platform that powers and distributes Stripe's technical documentation, including docs.stripe.com as well as API, JS, and CLI reference sites",
+      "Building the generator which programmatically builds Stripe's API Reference documentation from OpenAPI",
+      'Maintaining <a href="https://markdoc.dev">Markdoc</a>, Stripe\'s open-source documentation format and surrounding tooling',
+      "Developing editor and web tooling to help teams write and maintain documentation effectively",
+      "Building thoughtful, interactive documentation experiences that help developers effectively understand and integrate against Stripe's APIs and products",
+    ],
+    tags: ["ruby", "ts", "go"],
+  },
+  {
     title: "Senior Software Engineer, Internal Tools",
     company: { name: "Shopify", url: "https://shopify.com" },
     start: "2024-09-01",
-    end: null,
+    end: "2025-03-01",
     highlights: [
       "Maintained Shopify's internal project management tool, the Vault",
       "Interviewed intern, intermediate, and senior engineering candidates in pair programming sessions",
