@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectEntry from './ProjectEntry.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => Number(b.data.highlighted) - Number(a.data.highlighted));
+const featured = projects[0];
+---
+
+<section class="block" id="projects">
+  <h2 class="section-title"><a class="pilcrow" href="#projects" aria-label="Link to this section">¶</a>Projects</h2>
+
+  {featured && <ProjectEntry project={featured} />}
+
+  <p class="see-all"><a class="hover-underline" href="/projects">See all projects →</a></p>
+</section>
+
+<style>
+  .block {
+    max-width: var(--col);
+    margin: 5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .see-all {
+    margin-top: 1.75rem;
+    font-size: 0.85rem;
+  }
+  .see-all a {
+    color: var(--fg);
+  }
+</style>

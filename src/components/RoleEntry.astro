@@ -1,0 +1,103 @@
+---
+import type { Role } from '../data/experience';
+import { formatTags } from '../data/tags';
+
+interface Props {
+  role: Role;
+}
+
+const { role } = Astro.props;
+
+function formatRange(start: string, end: string | null) {
+  const fmt = (iso: string) => new Date(iso).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  return end ? `${fmt(start)} — ${fmt(end)}` : `${fmt(start)} — Present`;
+}
+---
+
+<article class="role">
+  <div class="role-line">
+    <span>
+      {role.title}
+      <span class="role-company">
+        at {role.company.url ? <a href={role.company.url}>{role.company.name}</a> : role.company.name}
+      </span>
+    </span>
+    <time datetime={role.start}>{formatRange(role.start, role.end)}</time>
+  </div>
+  <ul class="plain">
+    {role.highlights.map((highlight) => (
+      <li set:html={highlight} />
+    ))}
+  </ul>
+  <p class="tags-line">{formatTags(role.tags)}</p>
+</article>
+
+<style>
+  .role-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-family: var(--font-display);
+    font-size: var(--size-h3);
+  }
+  .role-line time {
+    flex: none;
+    font-family: var(--font-text);
+    font-size: var(--size-small);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .role-company {
+    display: block;
+    font-family: var(--font-text);
+    font-size: var(--size-small);
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .role-company a {
+    color: var(--fg);
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .role-company a:hover,
+  .role-company a:focus-visible {
+    text-decoration-color: var(--fg);
+  }
+
+  .plain {
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+  }
+  .plain li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-top: 0.55rem;
+    font-size: var(--size-small);
+  }
+  .plain li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+  .plain :global(a) {
+    color: var(--fg);
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .plain :global(a:hover),
+  .plain :global(a:focus-visible) {
+    text-decoration-color: var(--fg);
+  }
+
+  .tags-line {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

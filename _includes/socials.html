@@ -1,8 +1,0 @@
-{% for social in site.data.socials %}
-  {% assign icon_url = "/assets/images/social/" | append: social.icon | relative_url %}
-
-  <a href="{{ social.url }}" aria-label="{{ social.title | smartify }}">
-    <img src="{{ icon_url }}" class="size-6" alt="{{ social.title }} Logo" />
-    <span class="sr-only">{{ social.title }}</span>
-  </a>
-{% endfor %}

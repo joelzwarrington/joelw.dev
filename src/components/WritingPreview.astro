@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import WritingEntry from './WritingEntry.astro';
+
+const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = posts[0];
+---
+
+<section class="block" id="writing">
+  <h2 class="section-title"><a class="pilcrow" href="#writing" aria-label="Link to this section">¶</a>Writing</h2>
+
+  {latest && <WritingEntry post={latest} />}
+
+  <p class="see-all"><a class="hover-underline" href="/writing">See all writing →</a></p>
+</section>
+
+<style>
+  .block {
+    max-width: var(--col);
+    margin: 5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .see-all {
+    margin-top: 1.75rem;
+    font-size: 0.85rem;
+  }
+  .see-all a {
+    color: var(--fg);
+  }
+</style>

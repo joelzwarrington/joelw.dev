@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatTags } from '../data/tags';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project" data-highlighted={project.data.highlighted || undefined}>
+  <p class="project-title">
+    {project.data.view ? (
+      <a class="hover-underline" href={project.data.view}>
+        {project.data.title}
+      </a>
+    ) : (
+      project.data.title
+    )}
+  </p>
+  <p class="project-desc">{project.data.description}</p>
+  {project.data.tags.length > 0 && <p class="tags-line">{formatTags(project.data.tags)}</p>}
+  {project.data.github && (
+    <p class="links-line">
+      <a href={project.data.github}>GitHub</a>
+    </p>
+  )}
+</article>
+
+<style>
+  .project-title {
+    font-family: var(--font-display);
+    font-size: var(--size-h3);
+    margin: 0;
+  }
+  .project[data-highlighted] .project-title {
+    font-weight: 700;
+  }
+  .project-title a {
+    color: var(--fg);
+  }
+  .project-desc {
+    margin: 0.5rem 0 0;
+    font-size: var(--size-small);
+  }
+  .tags-line {
+    margin-top: 0.7rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .links-line {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .links-line a {
+    color: var(--fg);
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .links-line a:hover,
+  .links-line a:focus-visible {
+    text-decoration-color: var(--fg);
+  }
+</style>
