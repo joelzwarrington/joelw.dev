@@ -99,13 +99,19 @@ const canonicalUrl = new URL(Astro.url.pathname, site.url);
   .site-header {
     max-width: var(--col);
     margin: 0 auto;
-    /* extra right padding keeps content clear of the fixed toggle at narrow widths */
-    padding: 1.5rem calc(1.5rem + 3rem) 1.5rem 1.5rem;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem 1rem;
+  }
+  /* Below this width the container's natural side margin no longer clears
+     the fixed toggle, so pad the header out to make room for it. */
+  @media (max-width: 54rem) {
+    .site-header {
+      padding-right: calc(1.5rem + 3rem);
+    }
   }
   .site-header .wordmark {
     font-family: var(--font-display);
