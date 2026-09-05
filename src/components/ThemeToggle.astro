@@ -46,18 +46,31 @@
     opacity: 0;
     transform: rotate(70deg) scale(0.4);
   }
-  /* Icon shows the theme a click will switch *to*, not the current one */
+  /* Icon shows the theme a click will switch *to*, not the current one.
+     Keyed off html[data-theme] (set synchronously in Base.astro's head
+     script, same as tokens.css) rather than JS-set state on this button,
+     so the correct icon paints on first frame instead of flashing. */
   .toggle .icon-moon {
     opacity: 1;
     transform: rotate(0deg) scale(1);
   }
-  .toggle[data-active='dark'] .icon-moon {
+  :global(html[data-theme='dark']) .toggle .icon-moon {
     opacity: 0;
     transform: rotate(70deg) scale(0.4);
   }
-  .toggle[data-active='dark'] .icon-sun {
+  :global(html[data-theme='dark']) .toggle .icon-sun {
     opacity: 1;
     transform: rotate(0deg) scale(1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme='light'])) .toggle .icon-moon {
+      opacity: 0;
+      transform: rotate(70deg) scale(0.4);
+    }
+    :global(html:not([data-theme='light'])) .toggle .icon-sun {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
     .toggle .icon {
@@ -88,7 +101,6 @@
   }
 
   function paint(theme: 'light' | 'dark') {
-    btn.setAttribute('data-active', theme);
     btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
   }
 
